@@ -1,0 +1,31 @@
+{% extends "layouts/layout-dashboard.twig" %}
+{% set page_group = "company" %}
+
+{#&#123;&#35; Set page properties (page.*) here. &#35;&#125;#}
+{% block page %}
+    {#&#123;&#35; By putting this in a special block, we ensure that it will be set AFTER the default values are set in the parent template, #}
+    {#but BEFORE the page itself is rendered. &#35;&#125;    #}
+    {% set page = page | merge({
+        "title"       : "Companies",
+        "description" : "Companies management."
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+
+{{ companies }}
+    {% for company in companies %}
+        company_name_th = {{company.company_name_th}}
+    {% endfor %}
+
+{% endblock %}
+{% block page_scripts %}
+        <script>            
+            $(document).ready(function() {
+//                ufTable('table-groups');
+            });
+        </script>
+{% endblock %}
+

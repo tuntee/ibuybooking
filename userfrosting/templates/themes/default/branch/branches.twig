@@ -1,0 +1,126 @@
+{% extends "layouts/layout-dashboard.twig" %}
+{% set page_group = "branch" %}
+
+{#&#123;&#35; Set page properties (page.*) here. &#35;&#125;#}
+{% block page %}
+    {#&#123;&#35; By putting this in a special block, we ensure that it will be set AFTER the default values are set in the parent template, #}
+    {#but BEFORE the page itself is rendered. &#35;&#125;    #}
+    {% set page = page | merge({
+        "title"       : "Branches",
+        "description" : "Branches management."
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title'><i class='fa fa-users'></i> Branches</h3>
+                </div>
+                <div class='panel-body'>
+                    <div class="table-responsive">
+                        <table id="table-branches" class="tablesorter table table-bordered table-hover table-striped tablesorter-bootstrap" data-sortlist="[[0, 0]]">
+                            <thead>
+                            <tr>
+                                <th class="sorter-metatext" data-column-name="branch_name">Branch Name <i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="phone">Phone<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="address">Address<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="last_modified">Last modified <i class="fa fa-sort"></i></th>
+                                <th data-column-name="flag_can_delete">Actions <i class="fa fa-sort"></i></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for branch in branches %}
+                                <tr>
+                                    <td data-text="{{branch.name_th}}">
+                                        <strong>
+                                            {#<i class="{{branch.icon}} fa-fw"></i> {{branch.name_th}}#}{{branch.name_th}}
+                                        </strong>
+                                        <div>
+                                            {#{% if branch.is_default == "2" %}#}
+                                                {#<i>Default Primary Group</i>#}
+                                            {#{% elseif branch.is_default == "1" %}#}
+                                                {#<i>Default  </i>#}
+                                            {#{% endif %}#}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{branch.phone}}
+                                    </td>
+                                    <td>
+                                        {{branch.address_th}}
+                                    </td>
+                                    <td>
+                                        {{branch.last_modified}}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                        {% if branch.status == 0 %}
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Disabled
+                                                <span class="caret"></span>
+                                            </button>
+                                        {% else %}
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </button>
+                                        {% endif %}
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#" data-id="{{branch.id}}" class="js-branch-edit" data-target="#dialog-branch-edit" data-toggle="modal">
+                                                        <i class="fa fa-edit"></i> Edit branch
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    {% if branch.status == 1 %}
+                                                        <a href="#" data-id="{{branch.id}}" class="js-branch-disable">
+                                                        <i class="fa fa-minus-circle"></i> Disable branch
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="#" data-id="{{branch.id}}" class="js-branch-enable">
+                                                        <i class="fa fa-plus-circle"></i> Enable branch
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+                                                <li>                                        
+                                                        <a href="#" data-id="{{branch.id}}" class="js-branch-delete" data-branch-name="{{branch.name_en}}" data-target="#dialog-branch-delete" data-toggle="modal">
+                                                            <i class="fa fa-trash-o"></i> Delete branch
+                                                        </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {% include 'components/common/table-tablesorter-default.twig' with {'pager_id' : 'table-branches-pager'} %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <button type="button" class="btn btn-success js-branch-create" data-toggle="modal" data-target="#dialog-branch-create">
+                                <i class="fa fa-plus-square"></i>  Create New Branch
+                            </button>
+                        </div>
+                        <div class="col-md-6 text-right ">
+                            <a href="#">View All Branches <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+        <script>            
+            $(document).ready(function() {
+//                ufTable('table-branches');
+            });
+        </script>
+{% endblock %}
+

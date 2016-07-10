@@ -1,0 +1,130 @@
+{% extends "layouts/layout-dashboard.twig" %}
+{% set page_group = "service" %}
+
+{#&#123;&#35; Set page properties (page.*) here. &#35;&#125;#}
+{% block page %}
+    {#&#123;&#35; By putting this in a special block, we ensure that it will be set AFTER the default values are set in the parent template, #}
+    {#but BEFORE the page itself is rendered. &#35;&#125;    #}
+    {% set page = page | merge({
+        "title"       : "Services",
+        "description" : "Services management."
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title'><i class='fa fa-users'></i> Services</h3>
+                </div>
+                <div class='panel-body'>
+                    <div class="table-responsive">
+                        <table id="table-branches" class="tablesorter table table-bordered table-hover table-striped tablesorter-bootstrap" data-sortlist="[[0, 0]]">
+                            <thead>
+                            <tr>
+                                <th class="sorter-metatext" data-column-name="service_name">Service Name <i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="price_TH">Price Thai<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="price_foreigner">Price Foreigner<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="updated_at">Last Modified <i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="customer_quantity">Customer Quantity<i class="fa fa-sort"></i></th>
+                                <th data-column-name="flag_can_delete">Actions <i class="fa fa-sort"></i></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for service in services %}
+                                <tr>
+                                    <td data-text="{{service.name_th}}">
+                                        <strong>
+                                            {#<i class="{{service.icon}} fa-fw"></i> {{service.name_th}}#}{{service.name_th}}
+                                        </strong>
+                                        <!-- <div>
+                                            {#{% if branch.is_default == "2" %}#}
+                                                {#<i>Default Primary Group</i>#}
+                                            {#{% elseif branch.is_default == "1" %}#}
+                                                {#<i>Default  </i>#}
+                                            {#{% endif %}#}
+                                        </div> -->
+                                    </td>
+                                    <td>
+                                        {{service.price_TH}}
+                                    </td>
+                                    <td>
+                                        {{service.price_foreigner}}
+                                    </td>
+                                    <td>
+                                        {{service.updated_at}}
+                                    </td>
+                                    <td>
+                                        {{service.customer_quantity}}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                        {% if service.status == 0 %}
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Disabled
+                                                <span class="caret"></span>
+                                            </button>
+                                        {% else %}
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </button>
+                                        {% endif %}
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#" data-id="{{service.id}}" class="js-service-edit" data-target="#dialog-service-edit" data-toggle="modal">
+                                                        <i class="fa fa-edit"></i> Edit service
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    {% if service.status == 1 %}
+                                                        <a href="#" data-id="{{service.id}}" class="js-service-disable">
+                                                        <i class="fa fa-minus-circle"></i> Disable service
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="#" data-id="{{service.id}}" class="js-service-enable">
+                                                        <i class="fa fa-plus-circle"></i> Enable service
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+                                                <li>                                        
+                                                        <a href="#" data-id="{{service.id}}" class="js-service-delete" data-service-name="{{service.name_en}}" data-target="#dialog-service-delete" data-toggle="modal">
+                                                            <i class="fa fa-trash-o"></i> Delete service
+                                                        </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {% include 'components/common/table-tablesorter-default.twig' with {'pager_id' : 'table-services-pager'} %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <button type="button" class="btn btn-success js-service-create" data-toggle="modal" data-target="#dialog-service-create">
+                                <i class="fa fa-plus-square"></i>  Create New Service
+                            </button>
+                        </div>
+                        <div class="col-md-6 text-right ">
+                            <a href="#">View All Services <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+        <script>            
+            $(document).ready(function() {
+//                ufTable('table-branches');
+            });
+        </script>
+{% endblock %}
+

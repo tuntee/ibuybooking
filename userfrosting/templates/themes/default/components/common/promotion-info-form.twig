@@ -1,0 +1,194 @@
+<form name="promotion" method="post" action="{{form_action}}">
+    <div id="{{alerts_id | default('form-alerts')}}">
+    </div>
+    <div class="row">
+        {% if 'title_th' not in fields.hidden %}
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label>Promotion title TH</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                    <input type="text" class="form-control" id="title_th" name="title_th" autocomplete="off" value="{{promotion.title_th}}" placeholder="Please enter the Thai promotion name" {% if 'title_th' in fields.disabled %}disabled{% endif %}>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if 'title_en' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Promotion title EN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="title_en" name="title_en" autocomplete="off" value="{{promotion.title_en}}" placeholder="Please enter the English promotion name" {% if 'title_en' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'title_cn' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Promotion title CN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="title_cn" name="title_cn" autocomplete="off" value="{{promotion.title_cn}}" placeholder="Please enter the China promotion name" {% if 'title_cn' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'discount_price' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Discount Price</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="discount_price" name="discount_price" autocomplete="off" value="{{promotion.discount_price}}" placeholder="" {% if 'discount_price' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'discount_percent' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Discount Percent</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="discount_percent" name="discount_percent" autocomplete="off" value="{{promotion.discount_percent}}" placeholder="" {% if 'discount_percent' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'start_at' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Start</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="start_at" name="start_at" autocomplete="off" value="{{promotion.start_at}}" placeholder="" {% if 'start_at' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'end_at' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Expire</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="end_at" name="end_at" autocomplete="off" value="{{promotion.end_at}}" placeholder="" {% if 'end_at' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'services' not in fields.hidden %}
+            <div class="col-sm-6">
+                <h5>Services</h5>
+                <ul class="list-group permission-summary-rows">
+                    {% for service in services %}
+                        <li class="list-group-item">
+                            {{service.name_th}}
+                            <span class="pull-right">
+                      <input type="checkbox" name="services[{{service.id}}]" class="form-control bootstrapswitch" data-id="{{service.id}}" {% if service.member %}checked{% endif %} {% if 'services' in fields.disabled %}disabled{% endif %}>
+                                {% if 'primary_group_id' not in fields.hidden %}
+                                    {#<button type="button" class="bootstrapradio btn btn-xs" name="primary_group_id" value="{{service.id}}" title="Set as primary group" data-selected="{% if service.id == target_user.primary_group_id %}true{% else %}false{% endif %}" {% if not service.member or 'primary_group_id' in fields.disabled %}disabled{% endif %}>#}
+                                        {#<i class="fa fa-home"></i>#}
+                                    {#</button>#}
+                                {% endif %}
+                    </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if 'detail_th' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Detail TH</label>
+                    <!-- <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="title_cn" name="title_cn" autocomplete="off" value="{{promotion.title_cn}}" placeholder="Please enter the China promotion name" {% if 'title_cn' in fields.disabled %}disabled{% endif %}>
+                    </div> -->
+                    <textarea rows=3 class="form-control" id="detail_th" name="detail_th" placeholder="Company detail in Thai." {% if 'detail_th' in fields.disabled %}disabled{% endif %}>{{ promotion.detail_th }}</textarea>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'detail_en' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Detail EN</label>
+                    <!-- <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="title_cn" name="title_cn" autocomplete="off" value="{{promotion.title_cn}}" placeholder="Please enter the China promotion name" {% if 'title_cn' in fields.disabled %}disabled{% endif %}>
+                    </div> -->
+                    <textarea rows=3 class="form-control" id="detail_en" name="detail_en" placeholder="Company detail in Thai." {% if 'detail_en' in fields.disabled %}disabled{% endif %}>{{ promotion.detail_en }}</textarea>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'detail_cn' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Detail CN</label>
+                    <!-- <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="title_cn" name="title_cn" autocomplete="off" value="{{promotion.title_cn}}" placeholder="Please enter the China promotion name" {% if 'title_cn' in fields.disabled %}disabled{% endif %}>
+                    </div> -->
+                    <textarea rows=3 class="form-control" id="detail_cn" name="detail_cn" placeholder="Company detail in Thai." {% if 'detail_cn' in fields.disabled %}disabled{% endif %}>{{ promotion.detail_cn }}</textarea>
+                </div>
+            </div>
+        {% endif %}
+    </div><br>
+    <div class="row">
+        {% if "submit" not in buttons.hidden %}
+        <div class="col-xs-8 col-sm-4">
+            <div class="vert-pad">
+                <button type="submit" class="btn btn-block btn-lg btn-success">
+                    {{submit_button}}
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "edit" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-md btn-primary js-promotion-edit" data-id="{{promotion.id}}" data-toggle="modal">
+                    <i class="fa fa-edit"></i> Edit
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "enable" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                {% if promotion.status == "1" %}
+                    <button type="button" class="btn btn-block btn-md btn-warning js-promotion-disable" data-id="{{promotion.id}}">
+                        <i class="fa fa-minus-circle"></i> Disable
+                    </button>
+                {% else %}
+                    <button type="button" class="btn btn-block btn-md btn-warning js-promotion-enable" data-id="{{promotion.id}}">
+                        <i class="fa fa-plus-circle"></i> Enable
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% if "delete" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-md btn-danger js-promotion-delete" data-id="{{promotion.id}}" data-promotion_title="{{promotion.title_en}}" data-toggle="modal">
+                    <i class="fa fa-trash-o"></i> Delete
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "cancel" not in buttons.hidden %}
+        <div class="col-xs-4 col-sm-3 pull-right">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-lg btn-link" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</form>
+<script>
+// Load the validator rules for this form
+var validators = {{validators | raw}};
+</script>

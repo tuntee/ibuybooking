@@ -1,0 +1,178 @@
+<form name="branch" method="post" action="{{form_action}}">
+    <div id="{{alerts_id | default('form-alerts')}}">
+    </div>
+    <div class="row">
+        {% if 'name_th' not in fields.hidden %}
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label>Branch name TH</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                    <input type="text" class="form-control" id="name_th" name="name_th" autocomplete="off" value="{{branch.name_th}}" placeholder="Please enter the Thai branch name" {% if 'name_th' in fields.disabled %}disabled{% endif %}>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if 'name_en' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Branch name EN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="name_en" name="name_en" autocomplete="off" value="{{branch.name_en}}" placeholder="Please enter the English branch name" {% if 'name_en' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'name_cn' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Branch name CN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="name_cn" name="name_cn" autocomplete="off" value="{{branch.name_cn}}" placeholder="Please enter the China branch name" {% if 'name_cn' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'phone' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Phone</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="phone" name="phone" autocomplete="off" value="{{branch.phone}}" placeholder="" {% if 'phone' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'address_th' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Address TH</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="address_th" name="address_th" autocomplete="off" value="{{branch.address_th}}" placeholder="" {% if 'address_th' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'address_en' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Address EN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="address_en" name="address_en" autocomplete="off" value="{{branch.address_en}}" placeholder="" {% if 'address_en' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'address_cn' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Address CN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="address_cn" name="address_cn" autocomplete="off" value="{{branch.address_cn}}" placeholder="" {% if 'address_cn' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'lat' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>lat</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="lat" name="lat" autocomplete="off" value="{{branch.lat}}" placeholder="" {% if 'lat' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'lng' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>lng</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="lng" name="lng" autocomplete="off" value="{{branch.lng}}" placeholder="" {% if 'address' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {#<div class="col-sm-6">#}
+            {#<div class="form-group ">#}
+                {#<label>Last Updated</label>#}
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-calendar"></i></span>#}
+                    {#<input type="text" class="form-control" name="last_sign_in_time" autocomplete="off" value="{% if branch.last_sign_in_time %}{{branch.last_sign_in_time | date('M j, Y g:i a')}}{% else %}Brand new!{% endif %}" disabled>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="col-sm-6">#}
+            {#<div class="form-group ">#}
+                {#<label>Created Since</label>#}
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-calendar"></i></span>#}
+                    {#<input type="text" class="form-control" name="sign_up_time" autocomplete="off" value="{% if branch.sign_up_time %}{{branch.sign_up_time | date('M j, Y g:i a')}}{% else %}Unknown{% endif %}" disabled>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    </div><br>
+    <div class="row">
+        {% if "submit" not in buttons.hidden %}
+        <div class="col-xs-8 col-sm-4">
+            <div class="vert-pad">
+                <button type="submit" class="btn btn-block btn-lg btn-success">
+                    {{submit_button}}
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "edit" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-md btn-primary js-user-edit" data-id="{{branch.id}}" data-toggle="modal">
+                    <i class="fa fa-edit"></i> Edit
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "enable" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                {% if branch.status == "1" %}
+                    <button type="button" class="btn btn-block btn-md btn-warning js-user-disable" data-id="{{branch.id}}">
+                        <i class="fa fa-minus-circle"></i> Disable
+                    </button>
+                {% else %}
+                    <button type="button" class="btn btn-block btn-md btn-warning js-user-enable" data-id="{{branch.id}}">
+                        <i class="fa fa-plus-circle"></i> Enable
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% if "delete" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-md btn-danger js-user-delete" data-id="{{branch.id}}" data-user_name="{{branch.user_name}}" data-toggle="modal">
+                    <i class="fa fa-trash-o"></i> Delete
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "cancel" not in buttons.hidden %}
+        <div class="col-xs-4 col-sm-3 pull-right">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-lg btn-link" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</form>
+<script>
+// Load the validator rules for this form
+var validators = {{validators | raw}};
+</script>

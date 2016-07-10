@@ -1,0 +1,93 @@
+{
+    "name_th" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            },
+            "required" : {
+                "message" : "ACCOUNT_SPECIFY_DISPLAY_NAME"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "name_en" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "name_cn" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "address_th" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 200,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            },
+            "required" : {
+                "message" : "ACCOUNT_SPECIFY_DISPLAY_NAME"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "address_en" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 200,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            },
+            "required" : {
+                "message" : "ACCOUNT_SPECIFY_DISPLAY_NAME"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "address_cn" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 200,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            },
+            "required" : {
+                "message" : "ACCOUNT_SPECIFY_DISPLAY_NAME"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "phone" : {
+        "validators" : {
+            "required" : {
+                "message" : "ACCOUNT_SPECIFY_EMAIL"
+            },
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_EMAIL_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "status" : {
+        "validators" : {
+            
+        },
+        "sanitizers" : { "raw" : {}}
+    }
+}

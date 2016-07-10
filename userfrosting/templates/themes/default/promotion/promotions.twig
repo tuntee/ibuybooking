@@ -1,0 +1,134 @@
+{% extends "layouts/layout-dashboard.twig" %}
+{% set page_group = "promotion" %}
+
+{#&#123;&#35; Set page properties (page.*) here. &#35;&#125;#}
+{% block page %}
+    {#&#123;&#35; By putting this in a special block, we ensure that it will be set AFTER the default values are set in the parent template, #}
+    {#but BEFORE the page itself is rendered. &#35;&#125;    #}
+    {% set page = page | merge({
+        "title"       : "Promotion",
+        "description" : "Promotion management."
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title'><i class='fa fa-users'></i> Promotion</h3>
+                </div>
+                <div class='panel-body'>
+                    <div class="table-responsive">
+                        <table id="table-promotions" class="tablesorter table table-bordered table-hover table-striped tablesorter-bootstrap" data-sortlist="[[0, 0]]">
+                            <thead>
+                            <tr>
+                                <th class="sorter-metatext" data-column-name="title_th">Promotion Title <i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="discount_price">Price <i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="discount_percent">Percent<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="service">Service<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="start_at">Start<i class="fa fa-sort"></i></th>
+                                <th class="sorter-metatext" data-column-name="end_at">End<i class="fa fa-sort"></i></th>
+                                <th data-column-name="flag_can_delete">Actions <i class="fa fa-sort"></i></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for promotion in promotions %}
+                                <tr>
+                                    <td data-text="{{promotion.title_th}}">
+                                        <strong>
+                                            {#<i class="{{promotion.icon}} fa-fw"></i> {{promotion.title_th}}#}{{promotion.title_th}}
+                                        </strong>
+                                        <!-- <div>
+                                            {#{% if branch.is_default == "2" %}#}
+                                                {#<i>Default Primary Group</i>#}
+                                            {#{% elseif branch.is_default == "1" %}#}
+                                                {#<i>Default  </i>#}
+                                            {#{% endif %}#}
+                                        </div> -->
+                                    </td>
+                                    <td>
+                                        {{promotion.discount_price}}
+                                    </td>
+                                    <td>
+                                        {{promotion.discount_percent}}
+                                    </td>
+                                    <td>
+                                        {{promotion.service}}
+                                    </td>
+                                    <td>
+                                        {{promotion.start_at}}
+                                    </td>
+                                    <td>
+                                        {{promotion.end_at}}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                        {% if promotion.status == 0 %}
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Disabled
+                                                <span class="caret"></span>
+                                            </button>
+                                        {% else %}
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </button>
+                                        {% endif %}
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#" data-id="{{promotion.id}}" class="js-promotion-edit" data-target="#dialog-promotion-edit" data-toggle="modal">
+                                                        <i class="fa fa-edit"></i> Edit promotion
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    {% if promotion.status == 1 %}
+                                                        <a href="#" data-id="{{promotion.id}}" class="js-promotion-disable">
+                                                        <i class="fa fa-minus-circle"></i> Disable promotion
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="#" data-id="{{promotion.id}}" class="js-promotion-enable">
+                                                        <i class="fa fa-plus-circle"></i> Enable promotion
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+                                                <li>                                        
+                                                        <a href="#" data-id="{{promotion.id}}" class="js-promotion-delete" data-promotion-title="{{promotion.title_en}}" data-target="#dialog-promotion-delete" data-toggle="modal">
+                                                            <i class="fa fa-trash-o"></i> Delete promotion
+                                                        </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {% include 'components/common/table-tablesorter-default.twig' with {'pager_id' : 'table-promotions-pager'} %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <button type="button" class="btn btn-success js-promotion-create" data-toggle="modal" data-target="#dialog-promotion-create">
+                                <i class="fa fa-plus-square"></i>  Create New promotion
+                            </button>
+                        </div>
+                        <div class="col-md-6 text-right ">
+                            <a href="#">View All promotions <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+        <script>            
+            $(document).ready(function() {
+//                ufTable('table-branches');
+            });
+        </script>
+{% endblock %}
+

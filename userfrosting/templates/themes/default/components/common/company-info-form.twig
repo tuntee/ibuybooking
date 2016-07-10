@@ -1,0 +1,181 @@
+<form name="user" method="post" action="{{form_action}}">
+    <div id="{{alerts_id | default('form-alerts')}}">
+    </div>
+    <div class="row">
+        {% if 'company_name_th' not in fields.hidden %}
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label>Company name TH</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                    <input type="text" class="form-control" id="company_name_th" name="company_name_th" autocomplete="off" value="{{company.company_name_th}}" placeholder="Please enter the Thai company name" {% if 'company_name_th' in fields.disabled %}disabled{% endif %}>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if 'company_name_en' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Company name EN</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="company_name_en" name="company_name_en" autocomplete="off" value="{{company.company_name_en}}" placeholder="Please enter the English company name" {% if 'company_name_en' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'company_name_cn' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Company name China</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="company_name_cn" name="company_name_cn" autocomplete="off" value="{{company.company_name_cn}}" placeholder="Please enter the China company name" {% if 'company_name_cn' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'phone' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Phone</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="phone" name="phone" autocomplete="off" value="{{company.phone}}" placeholder="" {% if 'phone' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'type' not in fields.hidden %}
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label>Type</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="type" name="type" autocomplete="off" value="{{company.type}}" placeholder="" {% if 'type' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'address' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group ">
+                    <label>Address</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                        <input type="text" class="form-control" id="address" name="address" autocomplete="off" value="{{company.address}}" placeholder="" {% if 'address' in fields.disabled %}disabled{% endif %}>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if 'company_detail_th' not in fields.hidden %}
+        <div class="col-sm-12">
+            <div class="form-group ">
+                <label>Detail TH</label>
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-edit"></i></span>#}
+                    <textarea rows=3 class="form-control" id="company_detail_th" name="company_detail_th" placeholder="Company detail in Thai." {% if 'company_detail_th' in fields.disabled %}disabled{% endif %}>{{ company.company_detail_th }}</textarea>
+                    {#<input type="text" class="form-control" name="display_name" autocomplete="off" value="{{company.display_name}}" placeholder="Please enter the display name" {% if 'display_name' in fields.disabled %}disabled{% endif %}>#}
+                {#</div>#}
+            </div>
+        </div>
+        {% endif %}
+        {% if 'company_detail_en' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group ">
+                    <label>Detail EN</label>
+                    {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-edit"></i></span>#}
+                    <textarea rows=3 class="form-control" id="company_detail_en" name="company_detail_en" placeholder="Company detail in English." {% if 'company_detail_en' in fields.disabled %}disabled{% endif %}>{{ company.company_detail_en }}</textarea>
+                    {#<input type="text" class="form-control" name="display_name" autocomplete="off" value="{{company.display_name}}" placeholder="Please enter the display name" {% if 'display_name' in fields.disabled %}disabled{% endif %}>#}
+                    {#</div>#}
+                </div>
+            </div>
+        {% endif %}
+        {% if 'company_detail_cn' not in fields.hidden %}
+            <div class="col-sm-12">
+                <div class="form-group ">
+                    <label>Detail China</label>
+                    {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-edit"></i></span>#}
+                    <textarea rows=3 class="form-control" id="company_detail_cn" name="company_detail_cn" placeholder="Company detail in Thai." {% if 'company_detail_cn' in fields.disabled %}disabled{% endif %}>{{ company.company_detail_cn }}</textarea>
+                    {#<input type="text" class="form-control" name="display_name" autocomplete="off" value="{{company.display_name}}" placeholder="Please enter the display name" {% if 'display_name' in fields.disabled %}disabled{% endif %}>#}
+                    {#</div>#}
+                </div>
+            </div>
+        {% endif %}
+        {#<div class="col-sm-6">#}
+            {#<div class="form-group ">#}
+                {#<label>Last Updated</label>#}
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-calendar"></i></span>#}
+                    {#<input type="text" class="form-control" name="last_sign_in_time" autocomplete="off" value="{% if company.last_sign_in_time %}{{company.last_sign_in_time | date('M j, Y g:i a')}}{% else %}Brand new!{% endif %}" disabled>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="col-sm-6">#}
+            {#<div class="form-group ">#}
+                {#<label>Created Since</label>#}
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="fa fa-calendar"></i></span>#}
+                    {#<input type="text" class="form-control" name="sign_up_time" autocomplete="off" value="{% if company.sign_up_time %}{{company.sign_up_time | date('M j, Y g:i a')}}{% else %}Unknown{% endif %}" disabled>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    </div><br>
+    <div class="row">
+        {% if "submit" not in buttons.hidden %}
+        <div class="col-xs-8 col-sm-4">
+            <div class="vert-pad">
+                <button type="submit" class="btn btn-block btn-lg btn-success">
+                    {{submit_button}}
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "edit" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-md btn-primary js-user-edit" data-id="{{company.id}}" data-toggle="modal">
+                    <i class="fa fa-edit"></i> Edit
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {#{% if "enable" not in buttons.hidden %}#}
+        {#<div class="col-xs-6 col-sm-3">#}
+            {#<div class="vert-pad">#}
+                {#{% if company.status == "1" %}#}
+                    {#<button type="button" class="btn btn-block btn-md btn-warning js-user-disable" data-id="{{company.id}}">#}
+                        {#<i class="fa fa-minus-circle"></i> Disable#}
+                    {#</button>#}
+                {#{% else %}#}
+                    {#<button type="button" class="btn btn-block btn-md btn-warning js-user-enable" data-id="{{company.id}}">#}
+                        {#<i class="fa fa-plus-circle"></i> Enable#}
+                    {#</button>#}
+                {#{% endif %}#}
+            {#</div>#}
+        {#</div>#}
+        {#{% endif %}#}
+        {% if "delete" not in buttons.hidden %}
+        <div class="col-xs-6 col-sm-3">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-md btn-danger js-user-delete" data-id="{{company.id}}" data-user_name="{{company.user_name}}" data-toggle="modal">
+                    <i class="fa fa-trash-o"></i> Delete
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% if "cancel" not in buttons.hidden %}
+        <div class="col-xs-4 col-sm-3 pull-right">
+            <div class="vert-pad">
+                <button type="button" class="btn btn-block btn-lg btn-link" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</form>
+<script>
+// Load the validator rules for this form
+var validators = {{validators | raw}};
+</script>

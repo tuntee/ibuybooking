@@ -1,0 +1,96 @@
+{
+    "payment_option_online" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "payment_option_offline" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "accept_all_booking" : {
+        "validators" : {
+            "member_of" : {
+                "values" : [
+                    "0", "1"
+                ],
+                "message" : "VALIDATE_BOOLEAN"
+            }
+        }
+    },
+    "time_cancel_reservation" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 30,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "time_offer_booking" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 30,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "allow_edit_order" : {
+        "validators" : {
+            "array" : {
+                "message" : "VALIDATE_ARRAY"
+            }
+        }
+    },
+    "allow_refund" : {
+        "validators" : {
+            "array" : {
+                "message" : "VALIDATE_ARRAY"
+            }
+        }
+    },
+    "auto_send_sale_report" : {
+        "validators" : {
+            "member_of" : {
+                "values" : [
+                    "0", "1"
+                ],
+                "message" : "VALIDATE_BOOLEAN"
+            }
+        }
+    },
+    "auto_delete_and_export" : {
+        "validators" : {
+            "member_of" : {
+                "values" : [
+                    "0", "1"
+                ],
+                "message" : "VALIDATE_BOOLEAN"
+            }
+        }
+    },
+    "keep_sale_summary" : {
+        "validators" : {
+            "member_of" : {
+                "values" : [
+                    "0", "1"
+                ],
+                "message" : "VALIDATE_BOOLEAN"
+            }
+        }
+    }
+}

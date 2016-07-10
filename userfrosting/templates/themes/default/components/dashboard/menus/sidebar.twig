@@ -1,0 +1,92 @@
+<div class="sidebar-nav navbar-collapse">
+    <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+            </div>
+            <!-- /input-group -->
+        </li>
+        <li>
+            <a href="{{site.uri.public}}/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+        </li>
+        {% if checkAccess('uri_company') %}
+            <li>
+                <a href="{{site.uri.public}}/company/c"><i class="sc sc-zerg fa fa-fw"></i> Companies info</a>
+            </li>
+        {% endif %}
+        {% if checkAccess('uri_branch') %}
+            <li>
+                <a href="{{site.uri.public}}/branches"><i class="sc sc-zerg fa fa-fw"></i> Branches</a>
+            </li>
+        {% endif %}
+        {% if checkAccess('uri_service') %}
+            <li>
+                <a href="{{site.uri.public}}/services"><i class="sc sc-zerg fa fa-fw"></i> Services</a>
+            </li>
+        {% endif %}
+        {% if checkAccess('uri_company') %}
+            <li>
+                <a href="{{site.uri.public}}/company_config/c"><i class="sc sc-zerg fa fa-fw"></i> Company setting</a>
+            </li>
+        {% endif %}
+        {% if checkAccess('uri_promotion') %}
+        <li>
+            <a href="{{site.uri.public}}/promotions"><i class="sc sc-zerg fa fa-fw"></i> Promotions</a>
+        </li>
+        {% endif %}
+        {% if checkAccess('uri_users') %}
+        <li>
+            <a href="{{site.uri.public}}/users"><i class="fa fa-users fa-fw"></i> {{ translate("MENU_USERS") }}</a>
+        </li>
+        {% endif %}
+        {% if checkAccess('uri_summary') %}
+        <li>
+            <a href="{{site.uri.public}}/summary"><i class="sc sc-zergling fa-fw"></i> Summary </a>
+        </li>
+        {% endif %}
+        {% if checkAccess('uri_site_settings') or checkAccess('uri_manage_groups') %}
+        <li>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> {{ translate("MENU_CONFIGURATION") }}<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                {% if checkAccess('uri_site_settings') %}
+                <li>
+                    <a href="{{site.uri.public}}/config/settings"><i class="fa fa-globe fa-fw"></i> {{ translate("MENU_SITE_SETTINGS") }}</a>
+                </li>
+                {% endif %}
+                {% if checkAccess('uri_manage_groups') %}
+                <li>
+                    <a href="{{site.uri.public}}/groups"><i class="fa fa-tags fa-fw"></i> {{ translate("MENU_GROUPS") }}</a>
+                </li>
+                {% endif %}
+            </ul>
+            <!-- /.nav-second-level -->
+        </li>
+        {% endif %}
+        
+{#        {% if checkAccess('uri_site_settings') or checkAccess('uri_manage_groups') %}#}
+        <li>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> {{ translate("MENU_RETAILER_SETTING") }}<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+{#                {% if checkAccess('uri_site_settings') %}#}
+                <li>
+                    <a href="{{site.uri.public}}/config/settings"><i class="fa fa-globe fa-fw"></i> {{ translate("MENU_RETAILER_SETTINGS") }}</a>
+                </li>
+{#                {% endif %}#}
+{#                {% if checkAccess('uri_manage_groups') %}#}
+                <li>
+                    <a href="{{site.uri.public}}/groups"><i class="fa fa-tags fa-fw"></i> {{ translate("MENU_RETAILER_BLOG") }}</a>
+                </li>
+{#                {% endif %}#}
+            </ul>
+            <!-- /.nav-second-level -->
+        </li>
+{#        {% endif %}        #}
+        
+    </ul>
+</div>
+<!-- /.sidebar-collapse -->

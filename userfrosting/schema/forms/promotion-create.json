@@ -1,0 +1,129 @@
+{
+    "title_th" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "title_en" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "title_cn" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "detail_th" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 500,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "detail_en" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 500,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "detail_cn" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 500,
+                "message" : "ACCOUNT_DISPLAY_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "start_at" : {
+        "validators" : {            
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_EMAIL_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "end_at" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 50,
+                "message" : "ACCOUNT_EMAIL_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "discount_price" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 15,
+                "message" : "ACCOUNT_EMAIL_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "discount_percent" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 3,
+                "message" : "ACCOUNT_EMAIL_CHAR_LIMIT"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "type" : {
+        "validators" : {
+            "length" : {
+                "min" : 1,
+                "max" : 10,
+                "message" : "max_customer_support failed"
+            }
+        },
+        "sanitizers" : { "raw" : {}}
+    },
+    "status" : {
+        "validators" : {
+            "member_of" : {
+                "values" : [
+                    "0", "1"
+                ],
+                "message" : "VALIDATE_BOOLEAN" 
+            }
+        }
+    },
+    "services" : {
+        "validators" : {
+            "array" : {
+                "message" : "VALIDATE_ARRAY"
+            }
+        }
+    }
+}
